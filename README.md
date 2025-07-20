@@ -23,9 +23,9 @@ jupyter notebook notebooks/demo.ipynb
 
 ## 📂 Structure
 ```
-src/            core library
-notebooks/      demo & experiments
-examples/       place your images / videos here
+src/core library
+notebooks/  demo & experiments
+examples/   place your images / videos here
 ```
 
 ## 📐 Mathematical Foundations
@@ -122,7 +122,7 @@ Directional error magnitude uses Sobel gradients:
 
 $$
 \mathrm{err}_g=\sqrt{\bigl(g_x^{\text{orig}}-g_x^{\text{rec}}\bigr)^2+
-                       \bigl(g_y^{\text{orig}}-g_y^{\text{rec}}\bigr)^2 }.
+   \bigl(g_y^{\text{orig}}-g_y^{\text{rec}}\bigr)^2 }.
 $$
 
 Hot-spots guide further optimisation of the patch operator.
