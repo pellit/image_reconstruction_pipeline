@@ -45,12 +45,15 @@ I(x,y,t):\Omega\times[0,T]\to[0,1].
 
 ### 2. Fourier Decomposition (Isomorphism)
 The centred Fourier operator:
+
 ```math
 \tilde I(k_x,k_y)=\!\int_\Omega I(x,y)\,e^{-2\pi i(k_xx+k_yy)}\,dx\,dy
 ```
 is unitary, so energy is preserved:
+
 ```math
-\lVert I\rVert_2=\lVert\tilde I\rVert_2\n```
+\lVert I\rVert_2=\lVert\tilde I\rVert_2\n
+```
 Cropping with a low-pass mask $\chi_{|k|<k_c}$ keeps energy but discards information above $k_c$.
 
 ### 3. Fractal High-Frequency Extrapolation
