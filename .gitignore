@@ -10,3 +10,7 @@ __pycache__/
 .ipynb_checkpoints/
 # Data
 examples/
+fractal_pipeline/
+.gitignore
+
+open_proyecto.exe

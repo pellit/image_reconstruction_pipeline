@@ -33,25 +33,26 @@ examples/       place your images / videos here
 Below is the compact yet rigorous model that motivates each stage of the pipeline.
 
 ### 1. Signal Model
-An image is treated as a square–integrable function  
 
-\[
-I(x,y) : \Omega \subset \mathbb{R}^{2}\;\to\;[0,1],\qquad
-\lVert I\rVert_2^2=\iint_\Omega I^2\,dx\,dy<\infty .
-\]
+An image is treated as  
 
-For a video clip we extend to  
+$$
+I(x,y): \Omega \subset \mathbb{R}^2 \longrightarrow [0,1], \qquad
+\|I\|_2^2 = \iint_{\Omega} I^2\,dx\,dy < \infty .
+$$
 
-\[
-I(x,y,t):\Omega\times[0,T]\to[0,1].
-\]
+For a video clip:
+
+$$
+I(x,y,t): \Omega \times [0,T] \longrightarrow [0,1].
+$$
 
 ### 2. Fourier Decomposition (Isomorphism)
 The centred Fourier operator  
 
-\[
+$$
 \tilde I(k_x,k_y)=\!\int_\Omega I(x,y)\,e^{-2\pi i(k_xx+k_yy)}\,dx\,dy
-\]
+$$
 
 is unitary, so energy is preserved:  
 \(\lVert I\rVert_2=\lVert\tilde I\rVert_2\).  
@@ -61,28 +62,28 @@ information above \(k_c\).
 ### 3. Fractal High-Frequency Extrapolation
 Natural images follow  
 
-\[
+$$
 |\tilde I(k)|^2\propto|k|^{-\beta},\qquad\beta=2D_f-2,
-\]
+$$
 
 where \(D_f\) is the fractal (Hausdorff) dimension.  
 Missing bands are filled with the power-law prior
 
-\[
+$$
 \tilde I_{\text{boost}}(k)=
 \begin{cases}
 \tilde I(k), & |k|<k_c,\\
 \tilde I(k_c)\bigl(\tfrac{|k|}{k_c}\bigr)^{-\beta/2}, & |k|\ge k_c.
 \end{cases}
-\]
+$$
 
 ### 4. Phase Retrieval
 We solve  
 
-\[
+$$
 \min_\varphi\;\bigl\lVert I-\mathcal{F}^{-1}\!\bigl(|\tilde I|e^{i\varphi}\bigr)\bigr\rVert_2^2
 \quad\text{s.t.}\quad I\ge0,
-\]
+$$
 
 with the Gerchberg–Saxton iteration (alternating magnitude
 and positivity constraints).
@@ -91,26 +92,26 @@ and positivity constraints).
 Let \(P=\{P_j\}\) be a dissection of \(\Omega\) and \(T_j\) an isometry that maps
 \(P_j\) to \(Q_{\sigma(j)}\).  The operator  
 
-\[
+$$
 (\mathcal{D}_\sigma I)(x)=I\!\bigl(T_{\sigma^{-1}(j)}^{-1}x\bigr),\;x\in Q_j
-\]
+$$
 
 is unitary; total energy and the grey-level histogram are conserved.
 We search for the permutation \(\sigma^\*\) that maximises the conditional
 entropy  
 
-\[
+$$
 \sigma^\*=\arg\max_\sigma H\!\bigl(I(P_j)\mid\text{neigh}\bigr).
-\]
+$$
 
 ### 6. Quality & Information Bounds
 * **Shannon sampling:** \(f_s\!\ge\!2B\Rightarrow\) perfect inversion is possible.  
 * **Spectral SNR:**  
 
-  \[
+  $$
   \mathrm{SNR}_k=10\log_{10}
   \frac{\sum|\tilde I|^{2}}{\sum|\tilde I-\tilde I_{\text{rec}}|^{2}}.
-  \]
+  $$
 
 * **Entropy:** \(H(I)=-\sum p\log_2p.\)  
   The Dudeney step seeks \(H(I_{\text{rec}})\!\approx\!H(I)\) while respecting the
@@ -119,10 +120,10 @@ entropy
 ### 7. Error Maps
 Directional error magnitude uses Sobel gradients:
 
-\[
+$$
 \mathrm{err}_g=\sqrt{\bigl(g_x^{\text{orig}}-g_x^{\text{rec}}\bigr)^2+
                        \bigl(g_y^{\text{orig}}-g_y^{\text{rec}}\bigr)^2 }.
-\]
+$$
 
 Hot-spots guide further optimisation of the patch operator.
 
