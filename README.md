@@ -7,10 +7,10 @@
 **Restore hidden details from undersampled images/videos combining classic signal processing, fractal extrapolation and a novel _Dudeney Patch_ entropy step.**
 
 ## ✨ Features
-- 2‑D & 3‑D (video) Fourier pipeline  
-- Fractal high‑frequency boosting with tunable fractal dimension  
-- Iterative phase‑retrieval (Gerchberg–Saxton)  
-- 🚀 **Dudeney Patch:** first open‑source implementation of isometric entropy‑preserving patching  
+- 2‑D & 3‑D (video) Fourier pipeline
+- Fractal high‑frequency boosting with tunable fractal dimension
+- Iterative phase‑retrieval (Gerchberg–Saxton)
+- 🚀 **Dudeney Patch:** first open‑source implementation of isometric entropy‑preserving patching
 - Full metrics: PSNR, SSIM, MS‑SSIM, Shannon entropy
 
 ## 🖥️ Quick start
@@ -24,8 +24,8 @@ jupyter notebook notebooks/demo.ipynb
 ## 📂 Structure
 ```
 src/core library
-notebooks/  demo & experiments
-examples/   place your images / videos here
+notebooks/demo & experiments
+examples/ place your images / videos here
 ```
 
 ## 📐 Mathematical Foundations
@@ -34,7 +34,7 @@ Below is the compact yet rigorous model that motivates each stage of the pipelin
 
 ### 1. Signal Model
 
-An image is treated as  
+An image is treated as
 
 $$
 I(x,y): \Omega \subset \mathbb{R}^2 \longrightarrow [0,1], \qquad
@@ -48,25 +48,25 @@ I(x,y,t): \Omega \times [0,T] \longrightarrow [0,1].
 $$
 
 ### 2. Fourier Decomposition (Isomorphism)
-The centred Fourier operator  
+The centred Fourier operator
 
 $$
 \tilde I(k_x,k_y)=\!\int_\Omega I(x,y)\,e^{-2\pi i(k_xx+k_yy)}\,dx\,dy
 $$
 
-is unitary, so energy is preserved:  
-\(\lVert I\rVert_2=\lVert\tilde I\rVert_2\).  
+is unitary, so energy is preserved:
+\(\lVert I\rVert_2=\lVert\tilde I\rVert_2\).
 Cropping with a low-pass mask \(\chi_{|k|<k_c}\) keeps energy but discards
 information above \(k_c\).
 
 ### 3. Fractal High-Frequency Extrapolation
-Natural images follow  
+Natural images follow
 
 $$
 |\tilde I(k)|^2\propto|k|^{-\beta},\qquad\beta=2D_f-2,
 $$
 
-where \(D_f\) is the fractal (Hausdorff) dimension.  
+where \(D_f\) is the fractal (Hausdorff) dimension.
 Missing bands are filled with the power-law prior
 
 $$
@@ -78,7 +78,7 @@ $$
 $$
 
 ### 4. Phase Retrieval
-We solve  
+We solve
 
 $$
 \min_\varphi\;\bigl\lVert I-\mathcal{F}^{-1}\!\bigl(|\tilde I|e^{i\varphi}\bigr)\bigr\rVert_2^2
@@ -90,7 +90,7 @@ and positivity constraints).
 
 ### 5. Dudeney Patch – Entropy-Preserving Isometry
 Let \(P=\{P_j\}\) be a dissection of \(\Omega\) and \(T_j\) an isometry that maps
-\(P_j\) to \(Q_{\sigma(j)}\).  The operator  
+\(P_j\) to \(Q_{\sigma(j)}\).The operator
 
 $$
 (\mathcal{D}_\sigma I)(x)=I\!\bigl(T_{\sigma^{-1}(j)}^{-1}x\bigr),\;x\in Q_j
@@ -98,36 +98,36 @@ $$
 
 is unitary; total energy and the grey-level histogram are conserved.
 We search for the permutation \(\sigma^\*\) that maximises the conditional
-entropy  
+entropy
 
 $$
 \sigma^\*=\arg\max_\sigma H\!\bigl(I(P_j)\mid\text{neigh}\bigr).
 $$
 
 ### 6. Quality & Information Bounds
-* **Shannon sampling:** \(f_s\!\ge\!2B\Rightarrow\) perfect inversion is possible.  
-* **Spectral SNR:**  
+* **Shannon sampling:** \(f_s\!\ge\!2B\Rightarrow\) perfect inversion is possible.
+* **Spectral SNR:**
 
-  $$
-  \mathrm{SNR}_k=10\log_{10}
-  \frac{\sum|\tilde I|^{2}}{\sum|\tilde I-\tilde I_{\text{rec}}|^{2}}.
-  $$
+$$
+\mathrm{SNR}_k=10\log_{10}
+\frac{\sum|\tilde I|^{2}}{\sum|\tilde I-\tilde I_{\text{rec}}|^{2}}.
+$$
 
-* **Entropy:** \(H(I)=-\sum p\log_2p.\)  
-  The Dudeney step seeks \(H(I_{\text{rec}})\!\approx\!H(I)\) while respecting the
-  Bekenstein bound \(I\le 2\pi ER/\hbar c\).
+* **Entropy:** \(H(I)=-\sum p\log_2p.\)
+The Dudeney step seeks \(H(I_{\text{rec}})\!\approx\!H(I)\) while respecting the
+Bekenstein bound \(I\le 2\pi ER/\hbar c\).
 
 ### 7. Error Maps
 Directional error magnitude uses Sobel gradients:
 
 $$
 \mathrm{err}_g=\sqrt{\bigl(g_x^{\text{orig}}-g_x^{\text{rec}}\bigr)^2+
-   \bigl(g_y^{\text{orig}}-g_y^{\text{rec}}\bigr)^2 }.
+ \bigl(g_y^{\text{orig}}-g_y^{\text{rec}}\bigr)^2 }.
 $$
 
 Hot-spots guide further optimisation of the patch operator.
 
-> **TL;DR**  Every stage is unitary or entropy-conserving except the
+> **TL;DR**Every stage is unitary or entropy-conserving except the
 fractal extrapolation, which follows the empirical \(1/f\) law of natural
 images—so no artificial energy is injected and each boosted frequency is
 statistically plausible under a fractal prior.
