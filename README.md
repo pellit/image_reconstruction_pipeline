@@ -37,8 +37,7 @@ Below is the compact yet rigorous model that motivates each stage of the pipelin
 An image is treated as
 
 $$
-I(x,y): \Omega \subset \mathbb{R}^2 \longrightarrow [0,1], \qquad
-\|I\|_2^2 = \iint_{\Omega} I^2\,dx\,dy < \infty .
+I(x,y): \Omega \subset \mathbb{R}^2 \longrightarrow [0,1], \qquad\|I\|_2^2 = \iint_{\Omega} I^2\,dx\,dy <\infty .
 $$
 
 For a video clip:
@@ -70,19 +69,14 @@ where \(D_f\) is the fractal (Hausdorff) dimension.
 Missing bands are filled with the power-law prior
 
 $$
-\tilde I_{\text{boost}}(k)=
-\begin{cases}
-\tilde I(k), & |k|<k_c,\\
-\tilde I(k_c)\bigl(\tfrac{|k|}{k_c}\bigr)^{-\beta/2}, & |k|\ge k_c.
-\end{cases}
+\tilde I_{\text{boost}}(k)=\begin{cases}\tilde I(k), & |k|<k_c,\\\tilde I(k_c)\bigl(\tfrac{|k|}{k_c}\bigr)^{-\beta/2}, & |k|\ge k_c.\end{cases}
 $$
 
 ### 4. Phase Retrieval
 We solve
 
 $$
-\min_\varphi\;\bigl\lVert I-\mathcal{F}^{-1}\!\bigl(|\tilde I|e^{i\varphi}\bigr)\bigr\rVert_2^2
-\quad\text{s.t.}\quad I\ge0,
+\min_\varphi\;\bigl\lVert I-\mathcal{F}^{-1}\!\bigl(|\tilde I|e^{i\varphi}\bigr)\bigr\rVert_2^2\quad\text{s.t.}\quad I\ge0,
 $$
 
 with the Gerchberg–Saxton iteration (alternating magnitude
@@ -109,8 +103,7 @@ $$
 * **Spectral SNR:**
 
 $$
-\mathrm{SNR}_k=10\log_{10}
-\frac{\sum|\tilde I|^{2}}{\sum|\tilde I-\tilde I_{\text{rec}}|^{2}}.
+\mathrm{SNR}_k=10\log_{10}\frac{\sum|\tilde I|^{2}}{\sum|\tilde I-\tilde I_{\text{rec}}|^{2}}.
 $$
 
 * **Entropy:** \(H(I)=-\sum p\log_2p.\)
@@ -121,8 +114,7 @@ Bekenstein bound \(I\le 2\pi ER/\hbar c\).
 Directional error magnitude uses Sobel gradients:
 
 $$
-\mathrm{err}_g=\sqrt{\bigl(g_x^{\text{orig}}-g_x^{\text{rec}}\bigr)^2+
- \bigl(g_y^{\text{orig}}-g_y^{\text{rec}}\bigr)^2 }.
+\mathrm{err}_g=\sqrt{\bigl(g_x^{\text{orig}}-g_x^{\text{rec}}\bigr)^2+\bigl(g_y^{\text{orig}}-g_y^{\te{rec}}\bigr)^2 }.
 $$
 
 Hot-spots guide further optimisation of the patch operator.
