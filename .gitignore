@@ -13,3 +13,4 @@ examples/
 fractal_pipeline/
 .gitignore
 *.exe
+quality_to_quality.py
