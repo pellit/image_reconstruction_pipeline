@@ -12,5 +12,4 @@ __pycache__/
 examples/
 fractal_pipeline/
 .gitignore
-
-open_proyecto.exe
+*.exe
