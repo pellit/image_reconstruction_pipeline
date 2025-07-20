@@ -33,30 +33,25 @@ examples/ place your images / videos here
 Below is the compact yet rigorous model that motivates each stage of the pipeline.
 
 ### 1. Signal Model
-An image is treated as a square–integrable function  
-
-\[
+An image is treated as a square–integrable function:
+```math
 I(x,y) : \Omega \subset \mathbb{R}^{2}\;\to\;[0,1],\qquad
 \lVert I\rVert_2^2=\iint_\Omega I^2\,dx\,dy<\infty .
-\]
-
-For a video clip we extend to  
-
-\[
+```
+For a video clip we extend to:
+```math
 I(x,y,t):\Omega\times[0,T]\to[0,1].
-\]
+```
 
 ### 2. Fourier Decomposition (Isomorphism)
-The centred Fourier operator  
-
-\[
+The centred Fourier operator:
+```math
 \tilde I(k_x,k_y)=\!\int_\Omega I(x,y)\,e^{-2\pi i(k_xx+k_yy)}\,dx\,dy
-\]
-
-is unitary, so energy is preserved:  
-\(\lVert I\rVert_2=\lVert\tilde I\rVert_2\).  
-Cropping with a low-pass mask \(\chi_{|k|<k_c}\) keeps energy but discards
-information above \(k_c\).
+```
+is unitary, so energy is preserved:
+```math
+\lVert I\rVert_2=\lVert\tilde I\rVert_2\n```
+Cropping with a low-pass mask $\chi_{|k|<k_c}$ keeps energy but discards information above $k_c$.
 
 ### 3. Fractal High-Frequency Extrapolation
 Natural images follow:
@@ -74,40 +69,32 @@ Missing bands are filled with the power-law prior:
 ```
 
 ### 4. Phase Retrieval
-We solve  
-
-\[
+We solve:
+```math
 \min_\varphi\;\bigl\lVert I-\mathcal{F}^{-1}\!\bigl(|\tilde I|e^{i\varphi}\bigr)\bigr\rVert_2^2
 \quad\text{s.t.}\quad I\ge0,
-\]
-
-with the Gerchberg–Saxton iteration (alternating magnitude
-and positivity constraints).
+```
+with the Gerchberg–Saxton iteration (alternating magnitude and positivity constraints).
 
 ### 5. Dudeney Patch – Entropy-Preserving Isometry
-Let \(P=\{P_j\}\) be a dissection of \(\Omega\) and \(T_j\) an isometry that maps
-\(P_j\) to \(Q_{\sigma(j)}\).  The operator  
-
-\[
+Let $P=\{P_j\}$ be a dissection of $\Omega$ and $T_j$ an isometry that maps $P_j$ to $Q_{\sigma(j)}$. The operator:
+```math
 (\mathcal{D}_\sigma I)(x)=I\!\bigl(T_{\sigma^{-1}(j)}^{-1}x\bigr),\;x\in Q_j
-\]
-
+```
 is unitary; total energy and the grey-level histogram are conserved.
-We search for the permutation \(\sigma^\*\) that maximises the conditional
-entropy  
-
-\[
+We search for the permutation $\sigma^\*$ that maximises the conditional entropy:
+```math
 \sigma^\*=\arg\max_\sigma H\!\bigl(I(P_j)\mid\text{neigh}\bigr).
-\]
+```
 
 ### 6. Quality & Information Bounds
-* **Shannon sampling:** \(f_s\!\ge\!2B\Rightarrow\) perfect inversion is possible.  
-* **Spectral SNR:**  
 
-  \[
-  \mathrm{SNR}_k=10\log_{10}
-  \frac{\sum|\tilde I|^{2}}{\sum|\tilde I-\tilde I_{\text{rec}}|^{2}}.
-  \]
+* **Shannon sampling:** $f_s\!\ge\!2B\Rightarrow$ perfect inversion is possible.
+* **Spectral SNR:**
+```math
+\mathrm{SNR}_k=10\log_{10}
+\frac{\sum|\tilde I|^{2}}{\sum|\tilde I-\tilde I_{\text{rec}}|^{2}}.
+```
 
 
 * **Entropy:**
