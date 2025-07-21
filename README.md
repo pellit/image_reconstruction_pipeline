@@ -1,4 +1,5 @@
 
+
 # Image Reconstruction Pipeline: FFT × Fractal × Phase × Dudeney
 
 <img src="https://img.shields.io/badge/License-MIT-green" alt="license"/>
@@ -52,7 +53,7 @@ The centred Fourier operator:
 is unitary, so energy is preserved:
 
 ```math
-\lVert I\rVert_2=\lVert\tilde I\rVert_2\n
+\lVert I\rVert_2=\lVert\tilde I\rVert_2
 ```
 Cropping with a low-pass mask $\chi_{|k|<k_c}$ keeps energy but discards information above $k_c$.
 
@@ -82,9 +83,9 @@ Let $P=\{P_j\}$ be a dissection of $\Omega$ and $T_j$ an isometry that maps $P_j
 (\mathcal{D}_\sigma I)(x)=I\!\bigl(T_{\sigma^{-1}(j)}^{-1}x\bigr),\;x\in Q_j
 ```
 is unitary; total energy and the grey-level histogram are conserved.
-We search for the permutation $\sigma^\*$ that maximises the conditional entropy:
+We search for the permutation $\sigma^{\ast}$ that maximises the conditional entropy:
 ```math
-\sigma^\*=\arg\max_\sigma H\!\bigl(I(P_j)\mid\text{neigh}\bigr).
+\sigma^{\ast}=\arg\max_\sigma H\!\bigl(I(P_j)\mid\text{neigh}\bigr).
 ```
 
 ### 6. Quality & Information Bounds
