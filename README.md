@@ -64,11 +64,10 @@ where $D_f$ is the fractal (Hausdorff) dimension.
 Missing bands are filled with the power-law prior:
 
 
-Para 
+For 
 ```math
 |k|<k_c$: \tilde I_{\text{boost}}(k) = \tilde I(k)
 ```
-Para
 ```math
 |k|\ge k_c$: \tilde I_{\text{boost}}(k) = \tilde I(k_c)\left(\frac{|k|}{k_c}\right)^{-\beta/2}
 ```
