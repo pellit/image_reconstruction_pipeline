@@ -66,11 +66,11 @@ Missing bands are filled with the power-law prior:
 
 Para 
 ```math
-|k|<k_c$: $\tilde I_{\text{boost}}(k) = \tilde I(k)
+|k|<k_c$: \tilde I_{\text{boost}}(k) = \tilde I(k)
 ```
 Para
 ```math
-|k|\ge k_c$: $\tilde I_{\text{boost}}(k) = \tilde I(k_c)\left(\frac{|k|}{k_c}\right)^{-\beta/2}
+|k|\ge k_c$: \tilde I_{\text{boost}}(k) = \tilde I(k_c)\left(\frac{|k|}{k_c}\right)^{-\beta/2}
 ```
 
 ### 4. Phase Retrieval
