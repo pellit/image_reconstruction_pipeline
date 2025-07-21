@@ -59,9 +59,10 @@ Cropping with a low-pass mask $\chi_{|k|<k_c}$ keeps energy but discards informa
 Natural images follow:
 ```math
 |\tilde I(k)|^2\propto|k|^{-\beta},\qquad\beta=2D_f-2,
-```
+
 where $D_f$ is the fractal (Hausdorff) dimension.
 Missing bands are filled with the power-law prior:
+```
 
 Para $|k|<k_c$: $\tilde I_{\text{boost}}(k) = \tilde I(k)$  
 Para $|k|\ge k_c$: $\tilde I_{\text{boost}}(k) = \tilde I(k_c)\left(\frac{|k|}{k_c}\right)^{-\beta/2}$
