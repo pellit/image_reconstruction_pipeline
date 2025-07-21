@@ -63,13 +63,8 @@ Natural images follow:
 where $D_f$ is the fractal (Hausdorff) dimension.
 Missing bands are filled with the power-law prior:
 
-```math
-\tilde I_{\text{boost}}(k)=
-\begin{cases}
-\tilde I(k), & |k|<k_c \\\\
-\tilde I(k_c)\bigl(\tfrac{|k|}{k_c}\bigr)^{-\beta/2}, & |k|\ge k_c
-\end{cases}
-```
+Para $|k|<k_c$: $\tilde I_{\text{boost}}(k) = \tilde I(k)$  
+Para $|k|\ge k_c$: $\tilde I_{\text{boost}}(k) = \tilde I(k_c)\left(\frac{|k|}{k_c}\right)^{-\beta/2}$
 
 ### 4. Phase Retrieval
 We solve:
